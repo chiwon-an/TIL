@@ -17,7 +17,7 @@
     - 집에가서 변경사항이 기록 되어있는 폴더만 다운로드
     - A, B가 똑같은 파일을 각자 수정했더라도, 버전으로써 기록이 됨. -> 원본은 그대로 보존이 됨.
 
-git : 협업도구
+git : **협업도구**
 
 git의 **3가지 영역**
 1. Working DIrectory : 작업중(변경사항을 기록도 안함)
@@ -59,4 +59,13 @@ git push origin master
 
 add - commit - push
 
-dddd
+1. 파일 생성
+2. 파일을 init 기능으로 git init으로 관리(최초 생성시 한 번만 클론 파일은 안해줘도 됨.)
+3. 
+
+
+추가적인 기능
+- git status : 로컬 저장소의 파일 상태를 확인(Working DIrectory, Staging Area, Repository에 뭐가 있는지)
+- cd 파일 위치를 변경
+- git config --global user.name "안치원" (한 번만 설정)
+- git config --global user.email "bluesun7248@naver.com" (한 번만 설정)
