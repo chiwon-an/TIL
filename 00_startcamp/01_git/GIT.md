@@ -59,13 +59,21 @@ git push origin master
 
 add - commit - push
 
+## 핵심정리
+
+### GIT 사용순서
 1. 파일 생성
-2. 파일을 init 기능으로 git init으로 관리(최초 생성시 한 번만 클론 파일은 안해줘도 됨.)
-3. 
+2. 파일을 init 기능으로 `git init`으로 관리(최초 생성시 한 번만 클론 파일은 안해줘도 됨.)
+3. 파일 작업
+4. 파일이 어느 정도 작업이 됐다? 그럼 `git add 파일이름`으로 (임시저장) 
+5. 파일이 다 완성된 것 같아 ! 그럼 `git commit -m "git내용정리"`
+6. 오늘 할 일 끝 !  그러면 github로 `git push origin master`
 
-
-추가적인 기능
-- git status : 로컬 저장소의 파일 상태를 확인(Working DIrectory, Staging Area, Repository에 뭐가 있는지)
-- cd 파일 위치를 변경
-- git config --global user.name "안치원" (한 번만 설정)
-- git config --global user.email "bluesun7248@naver.com" (한 번만 설정)
+### 추가적인 기능
+- `git status` : 로컬 저장소의 파일 상태를 확인(Working DIrectory, Staging Area, Repository에 뭐가 있는지)
+- `cd ../..` : 파일 위치를 변경
+- `git config --global user.name "안치원"` : 수정자 이름 표시(한 번만 설정)
+- `git config --global user.email "bluesun7248@naver.com"` : 수정자 이메일 표시(한 번만 설정)
+- `git log` : commit 목록확인
+- `git remote add origin 내 깃허브 주소` : 내 깃허브 주소 등록
+- `git remote -v` : 등록된 원격 저장소 목록확인
