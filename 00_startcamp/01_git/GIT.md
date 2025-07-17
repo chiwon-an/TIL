@@ -77,3 +77,7 @@ add - commit - push
 - `git log` : commit 목록확인
 - `git remote add origin 내 깃허브 주소` : 내 깃허브 주소 등록
 - `git remote -v` : 등록된 원격 저장소 목록확인
+- `git clone` : 한 번만 클론 해주고 그 다음에는 pull로 해도됨.(효율적)
+- `git pull` : 한 번만 클론 해주고 그 다음에는 pull로 해도됨.(효율적)
+
+---
