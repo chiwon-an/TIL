@@ -1,4 +1,3 @@
-
 """
 Flask 기반 생성형 AI 추천 웹 서비스
 10년차 파이썬 개발자 스타일, 타입힌트 및 주석 포함
@@ -46,11 +45,27 @@ HTML_FORM = """
     .ai-table td img { width: 36px; height: 36px; border-radius: 8px; background: #f6f8fa; }
     .review-box { background: #f8fafc; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; font-size: 14px; color: #4a5568; }
     .no-result { color: #e53e3e; font-weight: 500; }
+    .modal-bg { display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.25); z-index:1000; }
+    .modal-box { background:#fff; border-radius:12px; max-width:420px; margin:100px auto 0 auto; padding:28px 24px; box-shadow:0 4px 24px rgba(0,0,0,0.12); position:relative; }
+    .modal-title { font-size:20px; font-weight:bold; color:#2563eb; margin-bottom:16px; }
+    .modal-close { position:absolute; right:18px; top:12px; font-size:20px; color:#888; cursor:pointer; }
+    .pros-table { width:100%; border-collapse:collapse; margin-top:10px; }
+    .pros-table th, .pros-table td { border:1px solid #e2e8f0; padding:7px 6px; font-size:15px; }
+    .pros-table th { background:#f1f5f9; color:#2563eb; }
   </style>
+  <script>
+    function showProsModal() {
+      document.getElementById('modal-bg').style.display = 'block';
+    }
+    function closeProsModal() {
+      document.getElementById('modal-bg').style.display = 'none';
+    }
+  </script>
 </head>
 <body>
   <div class="center-box">
     <h2>생성형 AI 추천 설문</h2>
+    <button type="button" onclick="showProsModal()" style="float:right; margin-bottom:10px; background:#e0e7ef; color:#2563eb; border:none; border-radius:6px; padding:7px 16px; font-size:15px; font-weight:500; cursor:pointer;">전체 AI별 장점 보기</button>
     <form method="post">
       <label>1. 사용 목적
         <input type="text" name="purpose" value="{{purpose}}" placeholder="예: 일반 대화, 코딩, 번역, 글쓰기 등">
@@ -95,6 +110,22 @@ HTML_FORM = """
       </div>
     {% endif %}
   </div>
+  <div id="modal-bg" class="modal-bg" onclick="closeProsModal()">
+    <div class="modal-box" onclick="event.stopPropagation();">
+      <div class="modal-title">전체 AI별 장점</div>
+      <span class="modal-close" onclick="closeProsModal()">&times;</span>
+      <table class="pros-table">
+        <tr><th>AI 이름</th><th>제공사</th><th>장점</th></tr>
+        {% for ai in all_pros %}
+        <tr>
+          <td>{{ai['name']}}</td>
+          <td>{{ai['provider']}}</td>
+          <td>{{ai['pros']}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
 </body>
 </html>
 """
@@ -105,6 +136,11 @@ def index():
     services = load_ai_services(csv_path)
     if not services:
         print("[경고] 불러온 AI 서비스 데이터가 비어 있습니다. ai_services.csv 경로/내용을 확인하세요.")
+    # 전체 pros 표용 데이터
+    all_pros = [
+        {"name": ai.get("name", ""), "provider": ai.get("provider", ""), "pros": ai.get("pros", "")}
+        for ai in services
+    ]
     # 기본값
     form = {"purpose": "일반 대화", "budget": "무료", "language": "한국어", "api": False}
     results = None
@@ -186,7 +222,7 @@ def index():
                         except ValueError:
                             # 샘플링할 리뷰가 부족할 때(빈 리스트 등)
                             reviews.extend(review_list)
-    return render_template_string(HTML_FORM, **form, results=results, reviews=reviews)
+    return render_template_string(HTML_FORM, **form, results=results, reviews=reviews, all_pros=all_pros)
 
 if __name__ == "__main__":
     port = 8080  # 항상 8080 포트에서 실행
