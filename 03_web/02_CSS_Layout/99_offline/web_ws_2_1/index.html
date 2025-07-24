@@ -1,0 +1,76 @@
+<!-- 문제
+주어진 코드를 수정하여, 도서 관리 서비스의 기본 마크업을 진행하시오.
+요구사항
+h1 태그로 작성된 대제목은 화면의 중앙에 오도록한다.
+책 제목은 18px 크기의 굵은 글씨로 작성한다.
+책 저자는 14px 크기의 글씨로 작성한다.
+책 설명은 14px 크기의 글씨로 작성한다.
+제목과 저자 설명 사이에는 각각 10px 씩의 여유공간이 있어야한다.
+
+실행 결과는 첨부된 result 폴더의 이미지를 참고한다. -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .book-container {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      width: 800px;
+      height: auto;
+      text-align: left;
+    }
+
+    .book-title {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .author {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .explain {
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>도서 관리 서비스에 오신 것을 환영합니다</h1>
+
+  <div class="book-container">
+    <strong class="book-title">도서 제목 1</strong>
+    <p class="author">저자 1</p>
+    <p class="explain">Lorem ipsum dolor ddddddddddddddddddddddddddd</p>
+  </div>
+
+  <div class="book-container">
+    <strong class="book-title">도서 제목 2</strong>
+    <p class="author">저자 2</p>
+    <p class="explain">Lorem ipsum dolor ddddddddddddddddddddddddddd</p>
+  </div>
+
+  <div class="book-container">
+    <strong class="book-title">도서 제목 3</strong>
+    <p class="author">저자 3</p>
+    <p class="explain">Lorem ipsum dolor ddddddddddddddddddddddddddd</p>
+  </div>
+
+</body>
+</html>

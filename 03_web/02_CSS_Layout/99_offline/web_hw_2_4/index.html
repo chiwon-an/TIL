@@ -1,0 +1,31 @@
+<!-- 주석으로 요구 사항의 물음에 답하시오.
+요구사항
+자손 결합자와 자식 결합자의 차이가 무엇인지 작성한다.
+예시 코드의 차이가 드러나게끔 HTML 마크업을 작성한다. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div p {
+      color: blue;
+    }
+    div > p {
+      color: crimson;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <p>자식</p>
+    <ul>
+      <p>손자</p>
+    </ul>
+    <p>자식</p>
+  </div>
+</body>
+</html>

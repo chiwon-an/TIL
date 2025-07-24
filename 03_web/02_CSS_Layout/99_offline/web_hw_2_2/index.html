@@ -1,0 +1,59 @@
+<!-- 문제
+나를 소개할 수 있는 간단한 프로필 카드를 만들고자 한다. 요구 사항을 만족할 수 있도록 CSS를 부여하시오.
+요구사항
+카드의 크기는 자유롭게 구성한다.
+이미지의 크기는 부모 너비와 같은 크기가 되도록 한다.
+부모의 범위를 벗어나서는 안된다.
+이름은 이미지의 위에 겹쳐보이도록 위치를 수정한다.
+부모를 기준으로 아랫쪽 0px에 위치한다.
+그 외 속성은 자유롭게 구성한다. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  .container {
+    border: 2px black solid; 
+    height: 500px;
+    width: 300px;
+  }
+
+  .box {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    width: 100%;
+    z-index: 1;
+  }
+
+  .name {
+    position: absolute;
+    background-color: coral;
+    font-size: 30px;
+    z-index: 2;
+    padding: 0 90px;
+    bottom: 0px;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box">
+      <img src="image.png" alt="Profile Image">
+      <strong class="name">Name</strong>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci unde officiis ad nostrum. Laboriosam mollitia similique provident fuga tenetur saepe sit, amet eaque neque eius quaerat expedita ea illum veniam.</p>
+  </div>
+</body>
+
+</html>
