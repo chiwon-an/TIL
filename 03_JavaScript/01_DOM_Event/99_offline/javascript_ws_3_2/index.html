@@ -1,0 +1,109 @@
+<!-- 문제
+회원 가입시, 서버에 데이터가 전송되기 전에 js로 비밀번호의 유효성 검사를 진행하고자 한다. 제시된 조건을 만족하지 않으면, 에러메시지를 화면에 출력하도록 코드를 완성하시오.
+
+요구사항
+password1이 8자를 넘지 않으면 span#warning1 에 '비밀번호는 8자 이상이어야 합니다.' 에러메시지 출력
+password2가 password1과 같지 않으면 '비밀번호가 일치하지 않습니다.' 에러메시지 출력
+문제가 없을시 에러메시지 삭제 -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .warning-message {
+        color: red;
+      }
+    </style>
+</head>
+<body>
+  <h1>Sign up</h1>
+  <form>
+    <div>
+      <label for="username">username: </label>
+      <input type="text" id="username">
+    </div>
+
+    <div>
+      <label for="password1">password: </label>
+      <input type="password" id="password1">
+      <span id="warning1" class="warning-message"></span>
+    </div>
+
+    <div>
+      <label for="password2">password confirmation: </label>
+      <input type="password" id="password2">
+      <span id="warning2" class="warning-message"></span>
+    </div>
+    
+    <button>Signup</button>
+  </form>
+
+  <script>
+// 1번. password1이 8자를 넘지 않으면 span#warning1 에 '비밀번호는 8자 이상이어야 합니다.' 라는 에러메시지 출력
+    // 패스워드 선택 및 변수 할당
+    const password1Input = document.querySelector('#password1')
+    const warning1 = document.querySelector('#warning1')
+    
+    // 인풋을 받았을 때 실행하기 위한 코드
+    password1Input.addEventListener('input', checkpasswordLength)
+
+    // 인풋을 받을 때 실행할 함수
+    function checkpasswordLength() {
+
+      // 입력받은 패스워드의 길이를 변경 불가능한 length 변수에 넣기
+      const password1 = password1Input.value
+
+      // 길이가 8자보다 작은지 판단하는 법 
+      if (password1.length < 8) {
+        warning1.innerText = '비밀번호는 8자 이상이어야 합니다.'  
+      }
+
+      else {
+        warning1.innerText = ''
+      }
+    }
+
+// 2. password2가 password1과 같지 않으면 '비밀번호가 일치하지 않습니다.' 라는 에러메시지 출력
+      // HTML에서 password2랑 warning을 변수로 가져옴.
+      const password2Input = document.querySelector('#password2')
+      const warning2 = document.querySelector('#warning2')
+
+      // password2가 인풋을 받으면 checkpasswordMatch 실행
+      password2Input.addEventListener('input', checkpasswordMatch)
+
+      // 함수 정의
+      function checkpasswordMatch() {
+
+        // 최신값?을 위해서 함수 안에!!! 각 password 밸류로 바꾸고, 같은지 비교
+        pw1 = password1Input.value
+        pw2 = password2Input.value
+        if (pw1 === pw2) {
+          warning2.innerText = ''
+        }
+
+        else {
+          warning2.innerText = '비밀번호가 일치하지 않습니다'
+        }
+      }
+
+
+
+
+    
+
+    /* 
+      회원가입시, 서버에 데이터가 전송되기 전에 js로 비밀번호의 유효성 검사를 진행하고자 한다.
+      아래의 조건을 만족하지 않으면, 에러메시지를 화면에 출력하도록 코드를 완성하시오.
+      1. password1이 8자를 넘지 않으면 span#warning1 에 '비밀번호는 8자 이상이어야 합니다.' 라는 에러메시지 출력
+      2. password2가 password1과 같지 않으면 '비밀번호가 일치하지 않습니다.' 라는 에러메시지 출력
+      3. 문제가 없을시 에러메시지 삭제
+    */
+
+  </script>
+</body>
+</html>
