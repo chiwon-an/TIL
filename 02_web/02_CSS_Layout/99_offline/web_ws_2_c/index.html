@@ -1,0 +1,85 @@
+<!--
+문제
+CSS의 다양한 포지션을 연습하고자 한다.
+모두 동일한 모양을 한 div들에 제각기 다른 포지션을 부여하여 변화하는 모습을 확인하고, 그 특성을 알아보자.
+제공된 스켈레톤 코드를 활용하여 CSS 의 Position 속성을 복습하는 코드를 작성하시오. 
+
+요구사항
+각 div 에 적용된 class 이름을 참고하여 알맞은 position 속성을 부여한다. 
+style.css 파일을 생성한다. 
+필요한 속성들을 직접 정의한다. 
+화면에 출력되는 결과를 확인하시오. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Positioning with Scroll Example</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 0 auto;
+            width: 400px;
+            height: auto;
+            overflow-y: visible;
+            justify-items: center;            
+        }
+        .static-example {
+            color: white;
+            background-color: grey;
+            position: static;
+            z-index: 1;
+            width: 350px;
+            text-align: center;
+            padding: 5px;
+        }
+        .relative-example {
+            color: white;
+            background-color:   skyblue;
+            position: relative;
+            z-index: 1;
+            width: 350px;
+            text-align: center;
+            padding: 5px;
+            top: 20px;
+            left: 20px;
+        }
+        .absolute-example {
+            color: white;
+            background-color: greenyellow;
+            position: absolute;
+            z-index: 2;
+            text-align: center;
+            top: 10px;
+            left: 10px;
+            padding: 5px;
+        }
+        .sticky-example {
+            color: white;
+            background-color: coral;
+            position: sticky;
+            z-index: 2;
+            width: 350px;
+            text-align: center;
+            padding: 5px;
+            top: 0px;
+            left: 0px;
+        }
+
+        .filler-content {
+            height: 1000px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="static-example">Static</div>
+    <div class="relative-example">Relative</div>
+    <div class="absolute-example">Absolute</div>
+    <div class="sticky-example">Sticky</div>
+    <div class="filler-content"></div> <!-- 추가된 스크롤용 콘텐츠 -->
+</div>
+</body>
+</html>
