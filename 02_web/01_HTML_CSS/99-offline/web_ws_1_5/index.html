@@ -1,0 +1,70 @@
+<!-- 문단, 제목, 줄 나눔, 구획 등은 Block 요소를 사용하여 작성한다.
+링크, 이미지, 텍스트 강조 등은 Inline 요소를 사용하여 구성한다.
+다음 내용을 포함하도록 HTML을 구성한다:
+    상단 SSAFY 로고 이미지와 설명 텍스트
+    강조된 문장(굵게, 줄바꿈 포함)
+프로그램 설명 문단
+    주관, 후원, 위탁 정보를 포함한 텍스트
+    가로줄(hr)을 활용한 구분선
+    3개의 이모지 이미지 + 텍스트 구성 목록 (ul 사용)
+
+작성 시 유의사항
+불필요한 구조나 CSS는 작성하지 않는다.
+반드시 의미에 맞는 시멘틱 요소를 사용하도록 한다. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title-img{
+            width: 200px;
+            height: 100px;
+        }
+
+        .logo-img {
+            width: 200px;
+            height: 50px;
+        }
+
+        p {
+            font-size: 27px;
+            margin: 0 auto;
+        }
+
+        .content {
+            margin: 15px 0 auto;
+            font-size: 27px;
+        }
+
+        span {
+            font-size: 27px;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+
+        .character {
+            width: 200px;
+            height: 200px;
+           
+        }
+    </style>
+</head>
+<body>
+    <img class="title-img" src="images\ssafy_logo.png" alt="싸피로고입니다."><br>
+    <img class="title-img" src="images\ssafy_banner.png" alt="싸피배너입니다.">
+    <p>삼성청년 SW아카데미</p>
+    <p><strong>대한민국 sw의 미래를</strong> 이끕니다.</p>
+    <strong class="content">삼성의 SW 교육 경험과 고용노동부의 취업 지원 노하우를 바탕으러, 취업 준비생에게 SW역량 향상 교육 및 다양한 취업지원 서비스를 제공하여 취업에 성공하도록 돕는 프로그램입니다</strong>
+    <p class="content">본 교육과정은 삼성이 주관하고 고용노동부가 후원하며, 아이들과 미래재단이 함께합니다.</p>
+    <p>(교육운영은 멀티캠퍼스에서 위탁 실시)</p>
+    <hr>
+    <span>주관</span><img class="logo-img" src="images\multicampus_logo.png" alt="멀티캠퍼스 로고"><span>후원</span><img class="logo-img" src="images\mob_logo_moel.png" alt="고용노동부 로고"><br>
+    <img class="character" src="images\happling.png" alt="이미지"><span>최고의 교육</span><br>
+    <img class="character"src="images\happlossom.png" alt="이미지"><span>맞춤형 교육</span><br>
+    <img class="character"src="images\happlower.png" alt="이미지"><span>자기주도적 학습</span><br>
+    
+</body>
+</html>
