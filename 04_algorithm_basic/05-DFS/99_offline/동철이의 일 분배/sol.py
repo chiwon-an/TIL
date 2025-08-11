@@ -16,33 +16,48 @@ import sys
 sys.stdin = open('input.txt','r')
 
 
-def find_percent(percent, x, y):
+def find_percent(x):
 
     global max_percent
     global result
 
+    # 가지치기
+    if result <= max_percent:
+        return
+
     # 탈출 조건
     if x == N:
-        result = max(result, max_percent)
-        return
+        if result > max_percent:
+            max_percent = result     
+        return    
+        # max_percent = max(result, max_percent)
+        # return
 
     # 현재 값에서 할 동작들
     # 1행에서 선택한 열을 다른 행들은 선택할 수 없다는 것이 포인트인듯.
-    visited[y] = True
-    result *= percent[i][j]
-    find_percent(percent, x+1, y)
-    visited[y] = False
+    
+    for j in range(N):
+
+        if visited[j] == False:
+            visited[j] = True
+            # result도 초기화 해줘야 함.
+            prev = result
+            result *= percent[x][j]      
+            find_percent(x+1)
+            result = prev
+            visited[j] = False
 
 T = int(input())
 
 for tc in range(1, T+1):
     N = int(input())
 
-    percent = [list(map(int, input().split())) for _ in range(N)]
-    result = 1
+    percent = [list(map(lambda v: int(v) / 100.0, input().split())) for _ in range(N)]
+    print(percent)
+    result = 1.0
     visited = [False] * (N)
 
 
-    max_percent = -float('inf')
-    print(result*(0.01*(N-1)))
-
+    max_percent = 0.0
+    find_percent(0)
+    print(f'#{tc} {max_percent * 100:.6f}')
