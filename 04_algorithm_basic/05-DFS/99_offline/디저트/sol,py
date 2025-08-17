@@ -1,0 +1,85 @@
+'''
+1. 한 변의 길이가 N인 정사각형 모양을 가진 지역에 디저트 카페
+2. 숫자는 해당 디저트 카페에서 팔고 있는 디저트의 종류를 의미
+3. 카페들 사이에는 대각선 방향으로 움직일 수 있는 길
+4. 대각선 방향으로 움직이고 사각형 모양을 그리며 출발한 카페로 돌아와야 한다.
+5. 카페 투어 중에 같은 숫자의 디저트를 팔고 있는 카페가 있으면 안 된다.
+6. 왔던 길을 다시 돌아가는 것도 안 된다.
+7. 디저트를 가장 많이 먹을 수 있는 경로를 찾고, 그 때의 디저트 수를 정답으로 출력 / 디저트를 먹을 수 없는 경우 -1을 출력
+
+DFS
+1. 대각선으로 움직이는 dx, dy 따로 정의
+2. 일단 가능한 시작점을 찾아야겠지? -> 시작점 찾기도 어렵다. -> dfs
+3. 시작점을 찾는 dfs는 전체를 탐색
+    1. 대각선으로 움직이는 4번의 인덱스가 N-1, N-1이내
+    2. 각 방문한 카페의 값이 다 달라야 함.
+    3. 4번만 움직이는게 아니라, 평행한 대각선끼리는 더 많아지는 것도 탐색필요
+    4. 왔던 길을 되돌어갈 수 없으니, VISITED행렬사용
+    5. 가능한 것들은 CNT+= 1 OR 
+    6. 만약 아무 것도 없다면 -1 출력
+
+나는 한 방향만 돌 거야. 그래야 안 겹침.
+근데 크게 돌고, 작게 돌고를 어떻게 구분하지...
+
+'''
+import sys
+sys.stdin = open('sample_input (3).txt','r')
+
+T = int(input())
+
+def find_optimal_route(x,y, result):
+
+    # 종료 조건(처음 위치랑 같아지면 종료! 라는 조건을 쓸 수가 있나?)
+    if visited[x][y] == True and cafes[x][y] == result[0]:
+        return len(result)
+
+
+    # 같은 종류의 디저트 카페를 만나면 안 됨. 근데 이러면 시작조건이랑 똑같아짐.
+    if cafes[x][y] in result:
+        return
+
+    # 범위 벗어나는 건 안 돼 !
+    if 0 > x or x > N-1 or 0 > y or y > N-1:
+        return
+    
+    # 방문한 적이 있는 곳은 안 돼 (처음에는 방문한 곳이 있잖아.)
+    if visited[x][y] == True:
+        return
+
+
+    # 이제 할 수 있는 것들을 해보자
+
+    visited[x][y] = True
+    result.append(cafes[x][y])
+
+    for k in range(4):
+        nx = x + dx[k]
+        ny = y + dy[k]
+
+        find_optimal_route(nx, ny, result.append(cafes[x][y]))
+        visited[nx][ny] = False
+        result.pop()
+
+
+
+
+    
+
+
+# 좌상, 좌하, 우하, 우상
+dx = [-1, 1, 1, -1]
+dy = [-1, -1, 1, 1]
+
+for tc in range(1, T+1):
+    
+    N = int(input())
+    
+    cafes = [list(map(int, input().split())) for _ in range(N)]
+    
+    visited = [[False]* N for _ in range(N)]
+    
+    result = find_optimal_route(0,0, [])
+
+
+
+    print(f'#{tc} {result}')
