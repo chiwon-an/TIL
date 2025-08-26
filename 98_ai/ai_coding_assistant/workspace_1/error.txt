@@ -1,0 +1,6 @@
+bundle.js:47362 Error calling OpenAI API: AuthenticationError: 401 Incorrect API key provided: 'sk-proj***********DGY1. You can find your API key at https://platform.openai.com/account/api-keys.
+    at APIError.generate (bundle.js:7644:14)
+    at OpenAI.makeStatusError (bundle.js:7055:67)
+    at OpenAI.makeRequest (bundle.js:7213:24)
+    at async sendMessage (bundle.js:47353:22)
+    at async handleSend (bundle.js:47810:28)
