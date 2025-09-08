@@ -1,0 +1,18 @@
+CREATE DATABASE sns_db;
+
+USE sns_db;
+
+CREATE TABLE user(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE posts(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(user_id) REFERENCES user(id)
+);
